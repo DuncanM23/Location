@@ -39,10 +39,10 @@ namespace LocationAPI
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ILocationRepository, LocationRepository>();
 
+            //Use hardoded connectionstring so that EF will work - when releasing use the config variable.
             services.AddDbContext<LocationDataContext>(options => options.UseSqlServer("Server=sql;Database=Location;Trusted_Connection=False;User Id=sa;Password=password1!;MultipleActiveResultSets=true"));
             //services.AddDbContext<LocationDataContext>(options => options.UseSqlServer(Configuration["ConnectionString"]));  
-            //services.AddDbContext<LocationDataContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
-
+           
         }
 
         // This method gets called by the runtime. Use  the HTTP request pipeline.
